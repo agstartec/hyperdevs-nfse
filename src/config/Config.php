@@ -2,7 +2,7 @@
 namespace Hyperevs\Nfse\Config;
 use Hyperevs\Nfse\Config\Exception\ConfigException;
 use Hyperevs\Nfse\Config\Contract\ConfigInterface;
-use Hyperevs\Nfse\Domain\TipoAmbiente;
+use Hyperevs\Nfse\Domain\Enum\TipoAmbiente;
 use Composer\InstalledVersions;
 
 class Config implements ConfigInterface

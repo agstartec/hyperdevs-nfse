@@ -1,6 +1,6 @@
 <?php
 namespace Hyperevs\Nfse\Config\Contract;
-use Hyperevs\Nfse\Domain\TipoAmbiente;
+use Hyperevs\Nfse\Domain\Enum\TipoAmbiente;
 
 interface ConfigInterface
 {

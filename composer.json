@@ -8,11 +8,22 @@
         }
     },
     "require": {
-        "php": "^8.3"
+        "php": "^8.3",
+        "ext-dom": "*",
+        "ext-curl": "*",
+        "ext-zlib": "*",
+        "psr/log": "^3.0"
     },
     "require-dev": {
         "orchestra/testbench": "^8.0",
         "illuminate/support": "^10.0"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Hyperevs\\Nfse\\Provider\\NfseProvider"
+            ]
+        }
     },
     "minimum-stability": "dev",
     "prefer-stable": true

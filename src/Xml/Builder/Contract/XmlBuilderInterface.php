@@ -1,0 +1,10 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Hyperevs\Nfse\Xml\Builder\Contract;
+
+interface XmlBuilderInterface
+{
+    public function build(object $entity): string;
+}
