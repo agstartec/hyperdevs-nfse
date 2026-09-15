@@ -9,4 +9,10 @@ return [
 
     // sefin ou adn
     'tipo_api' => env('NFSE_TIPO_API', 'sefin'),
+
+    'certificado' => [
+        // Caminho absoluto para o arquivo .pfx/.p12 do certificado A1
+        'path' => env('NFSE_CERTIFICADO_PATH'),
+        'senha' => env('NFSE_CERTIFICADO_SENHA'),
+    ],
 ];

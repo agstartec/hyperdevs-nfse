@@ -4,8 +4,10 @@ namespace Hyperevs\Nfse\Provider;
 
 use Hyperevs\Nfse\Config\Config;
 use Hyperevs\Nfse\Facade\NfseNacionalFacade;
+use Hyperevs\Nfse\Http\Security\CertificateManager;
 use Hyperevs\Nfse\Http\Security\Contract\CertificateManagerInterface;
 use Hyperevs\Nfse\Http\Security\Contract\XmlSignerInterface;
+use Hyperevs\Nfse\Http\Security\XmlSigner;
 use Illuminate\Support\ServiceProvider;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
@@ -27,11 +29,26 @@ class NfseProvider extends ServiceProvider
             ]);
         });
 
-        // CertificateManagerInterface e XmlSignerInterface não têm implementação própria
-        // desta lib (propositalmente, sem depender do pacote nfephp-org/sped-common).
-        // Vincule suas implementações no ServiceProvider da sua aplicação, ex.:
-        //   $this->app->bind(CertificateManagerInterface::class, MeuCertificateManager::class);
-        //   $this->app->bind(XmlSignerInterface::class, MeuXmlSigner::class);
+        // Implementação padrão (PFX + senha via .env), sem dependência do NFePHP.
+        // Para usar outra fonte de certificado, sobrescreva o binding no ServiceProvider
+        // da sua aplicação: $this->app->bind(CertificateManagerInterface::class, ...).
+        $this->app->singleton(CertificateManagerInterface::class, function ($app) {
+            $path = $app['config']['nfse.certificado.path'];
+            $senha = (string) $app['config']['nfse.certificado.senha'];
+
+            if (empty($path)) {
+                throw new \RuntimeException(
+                    'Configure NFSE_CERTIFICADO_PATH e NFSE_CERTIFICADO_SENHA no .env, ou vincule sua própria implementação de CertificateManagerInterface.'
+                );
+            }
+
+            return CertificateManager::fromPfxFile($path, $senha);
+        });
+
+        $this->app->singleton(XmlSignerInterface::class, function ($app) {
+            return new XmlSigner($app->make(CertificateManagerInterface::class)->getCertificate());
+        });
+
         $this->app->singleton(NfseNacionalFacade::class, function ($app) {
             return NfseNacionalFacade::create(
                 config: $app->make(Config::class),

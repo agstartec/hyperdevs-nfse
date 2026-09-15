@@ -12,6 +12,7 @@
         "ext-dom": "*",
         "ext-curl": "*",
         "ext-zlib": "*",
+        "ext-openssl": "*",
         "psr/log": "^3.0"
     },
     "require-dev": {
