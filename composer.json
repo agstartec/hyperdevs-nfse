@@ -1,0 +1,19 @@
+{
+    "name": "hyperevs/nfse",
+    "description": "Biblioteca para integração de NFS-e",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Hyperevs\\Nfse\\": "src/"
+        }
+    },
+    "require": {
+        "php": "^8.1"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^8.0",
+        "illuminate/support": "^10.0"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
