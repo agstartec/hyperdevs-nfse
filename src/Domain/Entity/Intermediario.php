@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Hyperevs\Nfse\Domain\Entity;
+namespace Hyperdevs\Nfse\Domain\Entity;
 
-use Hyperevs\Nfse\Domain\ValueObject\Cnpj;
-use Hyperevs\Nfse\Domain\ValueObject\Cpf;
-use Hyperevs\Nfse\Domain\ValueObject\Email;
-use Hyperevs\Nfse\Domain\ValueObject\Telefone;
+use Hyperdevs\Nfse\Domain\ValueObject\Cnpj;
+use Hyperdevs\Nfse\Domain\ValueObject\Cpf;
+use Hyperdevs\Nfse\Domain\ValueObject\Email;
+use Hyperdevs\Nfse\Domain\ValueObject\Telefone;
 
 class Intermediario
 {

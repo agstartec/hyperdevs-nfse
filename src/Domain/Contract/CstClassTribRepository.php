@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Hyperevs\Nfse\Domain\Contract;
+namespace Hyperdevs\Nfse\Domain\Contract;
 
-use Hyperevs\Nfse\Domain\ValueObject\CstClassTribProperties;
+use Hyperdevs\Nfse\Domain\ValueObject\CstClassTribProperties;
 
 interface CstClassTribRepository
 {

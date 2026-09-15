@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Hyperevs\Nfse\Domain\Entity;
+namespace Hyperdevs\Nfse\Domain\Entity;
 
-use Hyperevs\Nfse\Domain\ValueObject\CodigoClassificacaoTributaria;
-use Hyperevs\Nfse\Domain\ValueObject\CodigoSituacaoTributaria;
+use Hyperdevs\Nfse\Domain\ValueObject\CodigoClassificacaoTributaria;
+use Hyperdevs\Nfse\Domain\ValueObject\CodigoSituacaoTributaria;
 
 class IbsCbsTribRegular
 {

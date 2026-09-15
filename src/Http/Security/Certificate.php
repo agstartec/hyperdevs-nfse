@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Hyperevs\Nfse\Http\Security;
+namespace Hyperdevs\Nfse\Http\Security;
 
-use Hyperevs\Nfse\Http\Security\Exception\CertificateException;
+use Hyperdevs\Nfse\Http\Security\Exception\CertificateException;
 
 /**
  * Certificado digital A1 (PKCS#12), lido e manipulado apenas com ext-openssl.

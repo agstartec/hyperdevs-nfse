@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Hyperevs\Nfse\Domain\ValueObject;
+namespace Hyperdevs\Nfse\Domain\ValueObject;
 
-use Hyperevs\Nfse\Domain\Exception\InvalidChaveAcessoException;
+use Hyperdevs\Nfse\Domain\Exception\InvalidChaveAcessoException;
 
 final readonly class ChaveAcesso
 {

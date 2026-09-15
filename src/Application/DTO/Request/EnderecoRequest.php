@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Hyperevs\Nfse\Application\DTO\Request;
+namespace Hyperdevs\Nfse\Application\DTO\Request;
 
 final readonly class EnderecoRequest
 {

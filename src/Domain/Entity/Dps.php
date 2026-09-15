@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Hyperevs\Nfse\Domain\Entity;
+namespace Hyperdevs\Nfse\Domain\Entity;
 
-use Hyperevs\Nfse\Domain\Enum\MotivoEmissaoTI;
-use Hyperevs\Nfse\Domain\Enum\TipoAmbiente;
-use Hyperevs\Nfse\Domain\Enum\TipoEmitente;
-use Hyperevs\Nfse\Domain\Enum\VersaoSchema;
-use Hyperevs\Nfse\Domain\ValueObject\ChaveAcesso;
-use Hyperevs\Nfse\Domain\ValueObject\CodigoMunicipio;
+use Hyperdevs\Nfse\Domain\Enum\MotivoEmissaoTI;
+use Hyperdevs\Nfse\Domain\Enum\TipoAmbiente;
+use Hyperdevs\Nfse\Domain\Enum\TipoEmitente;
+use Hyperdevs\Nfse\Domain\Enum\VersaoSchema;
+use Hyperdevs\Nfse\Domain\ValueObject\ChaveAcesso;
+use Hyperdevs\Nfse\Domain\ValueObject\CodigoMunicipio;
 
 class Dps
 {

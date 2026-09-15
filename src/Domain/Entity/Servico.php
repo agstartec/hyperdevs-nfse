@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Hyperevs\Nfse\Domain\Entity;
+namespace Hyperdevs\Nfse\Domain\Entity;
 
-use Hyperevs\Nfse\Domain\Enum\TipoRetencaoIssqn;
-use Hyperevs\Nfse\Domain\Enum\TributacaoIssqn;
-use Hyperevs\Nfse\Domain\ValueObject\CodigoMunicipio;
-use Hyperevs\Nfse\Domain\ValueObject\Money;
+use Hyperdevs\Nfse\Domain\Enum\TipoRetencaoIssqn;
+use Hyperdevs\Nfse\Domain\Enum\TributacaoIssqn;
+use Hyperdevs\Nfse\Domain\ValueObject\CodigoMunicipio;
+use Hyperdevs\Nfse\Domain\ValueObject\Money;
 
 class Servico
 {

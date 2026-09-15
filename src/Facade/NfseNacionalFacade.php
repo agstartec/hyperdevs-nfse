@@ -2,22 +2,22 @@
 
 declare(strict_types=1);
 
-namespace Hyperevs\Nfse\Facade;
+namespace Hyperdevs\Nfse\Facade;
 
-use Hyperevs\Nfse\Application\DTO\Request\DpsRequest;
-use Hyperevs\Nfse\Application\DTO\Request\EventoRequest;
-use Hyperevs\Nfse\Application\DTO\Response\EventoResponse;
-use Hyperevs\Nfse\Application\DTO\Response\NfseResponse;
-use Hyperevs\Nfse\Application\Exception\ServiceException;
-use Hyperevs\Nfse\Application\Exception\ValidationException;
-use Hyperevs\Nfse\Application\Service\CancelarNfseService;
-use Hyperevs\Nfse\Application\Service\ConsultarNfseService;
-use Hyperevs\Nfse\Application\Service\EmitirDpsService;
-use Hyperevs\Nfse\Config\Config;
-use Hyperevs\Nfse\Http\Security\Contract\CertificateManagerInterface;
-use Hyperevs\Nfse\Http\Security\Contract\XmlSignerInterface;
-use Hyperevs\Nfse\Http\Security\Exception\CertificateExpiredException;
-use Hyperevs\Nfse\Factory\ServiceFactory;
+use Hyperdevs\Nfse\Application\DTO\Request\DpsRequest;
+use Hyperdevs\Nfse\Application\DTO\Request\EventoRequest;
+use Hyperdevs\Nfse\Application\DTO\Response\EventoResponse;
+use Hyperdevs\Nfse\Application\DTO\Response\NfseResponse;
+use Hyperdevs\Nfse\Application\Exception\ServiceException;
+use Hyperdevs\Nfse\Application\Exception\ValidationException;
+use Hyperdevs\Nfse\Application\Service\CancelarNfseService;
+use Hyperdevs\Nfse\Application\Service\ConsultarNfseService;
+use Hyperdevs\Nfse\Application\Service\EmitirDpsService;
+use Hyperdevs\Nfse\Config\Config;
+use Hyperdevs\Nfse\Http\Security\Contract\CertificateManagerInterface;
+use Hyperdevs\Nfse\Http\Security\Contract\XmlSignerInterface;
+use Hyperdevs\Nfse\Http\Security\Exception\CertificateExpiredException;
+use Hyperdevs\Nfse\Factory\ServiceFactory;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 

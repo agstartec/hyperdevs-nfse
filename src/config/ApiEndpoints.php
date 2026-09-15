@@ -1,6 +1,6 @@
 <?php
 
-namespace Hyperevs\Nfse\Config;
+namespace Hyperdevs\Nfse\Config;
 
 class ApiEndpoints
 {

@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Hyperevs\Nfse\Application\Service;
+namespace Hyperdevs\Nfse\Application\Service;
 
-use Hyperevs\Nfse\Application\DTO\Request\ConsultaRequest;
-use Hyperevs\Nfse\Application\DTO\Response\NfseResponse;
-use Hyperevs\Nfse\Application\Exception\ServiceException;
-use Hyperevs\Nfse\Application\Exception\ValidationException;
-use Hyperevs\Nfse\Application\Validator\ConsultaValidator;
-use Hyperevs\Nfse\Config\ApiEndpoints;
-use Hyperevs\Nfse\Http\Contract\ApiConnectorInterface;
-use Hyperevs\Nfse\Http\Exception\HttpException;
-use Hyperevs\Nfse\Xml\Parser\NfseXmlParser;
+use Hyperdevs\Nfse\Application\DTO\Request\ConsultaRequest;
+use Hyperdevs\Nfse\Application\DTO\Response\NfseResponse;
+use Hyperdevs\Nfse\Application\Exception\ServiceException;
+use Hyperdevs\Nfse\Application\Exception\ValidationException;
+use Hyperdevs\Nfse\Application\Validator\ConsultaValidator;
+use Hyperdevs\Nfse\Config\ApiEndpoints;
+use Hyperdevs\Nfse\Http\Contract\ApiConnectorInterface;
+use Hyperdevs\Nfse\Http\Exception\HttpException;
+use Hyperdevs\Nfse\Xml\Parser\NfseXmlParser;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 

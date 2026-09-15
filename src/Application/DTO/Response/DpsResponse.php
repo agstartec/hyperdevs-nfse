@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Hyperevs\Nfse\Application\DTO\Response;
+namespace Hyperdevs\Nfse\Application\DTO\Response;
 
 final readonly class DpsResponse
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Hyperevs\Nfse\Http\Security\Contract;
+namespace Hyperdevs\Nfse\Http\Security\Contract;
 
 interface XmlSignerInterface
 {

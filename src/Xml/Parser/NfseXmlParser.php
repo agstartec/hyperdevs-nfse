@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Hyperevs\Nfse\Xml\Parser;
+namespace Hyperdevs\Nfse\Xml\Parser;
 
 class NfseXmlParser
 {

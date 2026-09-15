@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Hyperevs\Nfse\Domain\Service;
+namespace Hyperdevs\Nfse\Domain\Service;
 
-use Hyperevs\Nfse\Domain\Entity\Dps;
+use Hyperdevs\Nfse\Domain\Entity\Dps;
 
 /**
  * Domain Service para geração do identificador da DPS.

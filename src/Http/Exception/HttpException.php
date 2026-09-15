@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Hyperevs\Nfse\Http\Exception;
+namespace Hyperdevs\Nfse\Http\Exception;
 
 class HttpException extends \RuntimeException
 {

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Hyperevs\Nfse\Repository;
+namespace Hyperdevs\Nfse\Repository;
 
-use Hyperevs\Nfse\Domain\Contract\CstClassTribRepository;
-use Hyperevs\Nfse\Domain\ValueObject\CstClassTribProperties;
+use Hyperdevs\Nfse\Domain\Contract\CstClassTribRepository;
+use Hyperdevs\Nfse\Domain\ValueObject\CstClassTribProperties;
 
 final class CachedCstClassTribRepository implements CstClassTribRepository
 {

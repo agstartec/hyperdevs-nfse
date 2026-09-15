@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Hyperevs\Nfse\Domain\Contract;
+namespace Hyperdevs\Nfse\Domain\Contract;
 
-use Hyperevs\Nfse\Domain\Enum\TipoEvento;
+use Hyperdevs\Nfse\Domain\Enum\TipoEvento;
 
 interface EventoInterface
 {

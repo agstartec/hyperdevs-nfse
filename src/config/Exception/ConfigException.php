@@ -1,5 +1,5 @@
 <?php
-namespace Hyperevs\Nfse\Config\Exception;
+namespace Hyperdevs\Nfse\Config\Exception;
 
 use Exception;
 

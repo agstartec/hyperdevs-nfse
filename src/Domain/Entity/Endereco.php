@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Hyperevs\Nfse\Domain\Entity;
+namespace Hyperdevs\Nfse\Domain\Entity;
 
-use Hyperevs\Nfse\Domain\ValueObject\Cep;
-use Hyperevs\Nfse\Domain\ValueObject\CodigoMunicipio;
+use Hyperdevs\Nfse\Domain\ValueObject\Cep;
+use Hyperdevs\Nfse\Domain\ValueObject\CodigoMunicipio;
 
 class Endereco
 {

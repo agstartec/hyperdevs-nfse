@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Hyperevs\Nfse\Application\DTO\Request;
+namespace Hyperdevs\Nfse\Application\DTO\Request;
 
 final readonly class DocDedRedRequest
 {
@@ -23,7 +23,7 @@ final readonly class DocDedRedRequest
         public ?string $dataEmissaoDoc = null,
         public ?string $valorDedutivel = null,
         public ?string $valorDeducao = null,
-        public ?\Hyperevs\Nfse\Application\DTO\Request\IbsCbsFornecedorRequest $fornecedor = null,
+        public ?\Hyperdevs\Nfse\Application\DTO\Request\IbsCbsFornecedorRequest $fornecedor = null,
     ) {
     }
 }

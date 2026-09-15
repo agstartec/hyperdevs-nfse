@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Hyperevs\Nfse\Application\Validator;
+namespace Hyperdevs\Nfse\Application\Validator;
 
-use Hyperevs\Nfse\Application\Exception\ValidationException;
-use Hyperevs\Nfse\Domain\Contract\CstClassTribRepository;
+use Hyperdevs\Nfse\Application\Exception\ValidationException;
+use Hyperdevs\Nfse\Domain\Contract\CstClassTribRepository;
 
 final class IbscbsResponseValidator
 {

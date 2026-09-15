@@ -1,4 +1,4 @@
-# hyperevs/nfse
+# hyperdevs/nfse
 
 Biblioteca PHP para emitir, consultar e cancelar **NFS-e** através da **NFS-e Nacional**
 (SEFIN/ADN — a plataforma unificada do governo para nota fiscal de serviço). Já inclui tudo
@@ -25,7 +25,7 @@ na ordem.
 ## Passo 1 — Instalar o pacote
 
 ```bash
-composer require hyperevs/nfse
+composer require hyperdevs/nfse
 ```
 
 ## Passo 2 — Publicar o arquivo de configuração
@@ -66,13 +66,13 @@ escrever nenhum código de segurança.
 ## Passo 4 — Emitir sua primeira NFS-e (exemplo completo)
 
 ```php
-use Hyperevs\Nfse\Application\DTO\Request\DpsRequest;
-use Hyperevs\Nfse\Application\DTO\Request\PrestadorRequest;
-use Hyperevs\Nfse\Application\DTO\Request\ServicoRequest;
-use Hyperevs\Nfse\Application\DTO\Request\TomadorRequest;
-use Hyperevs\Nfse\Application\Exception\ServiceException;
-use Hyperevs\Nfse\Application\Exception\ValidationException;
-use Hyperevs\Nfse\Facade\NfseNacionalFacade;
+use Hyperdevs\Nfse\Application\DTO\Request\DpsRequest;
+use Hyperdevs\Nfse\Application\DTO\Request\PrestadorRequest;
+use Hyperdevs\Nfse\Application\DTO\Request\ServicoRequest;
+use Hyperdevs\Nfse\Application\DTO\Request\TomadorRequest;
+use Hyperdevs\Nfse\Application\Exception\ServiceException;
+use Hyperdevs\Nfse\Application\Exception\ValidationException;
+use Hyperdevs\Nfse\Facade\NfseNacionalFacade;
 
 // 1. A "Facade" é o único objeto que você precisa usar. Em Laravel, injete ou resolva do container:
 $facade = app(NfseNacionalFacade::class);
@@ -160,7 +160,7 @@ try {
 $nfse = $facade->consultarPorChave($resposta->chaveAcesso);
 
 // Cancelar (usa a mesma Facade, com um EventoRequest)
-use Hyperevs\Nfse\Application\DTO\Request\EventoRequest;
+use Hyperdevs\Nfse\Application\DTO\Request\EventoRequest;
 
 $evento = new EventoRequest(
     tipoAmbiente: 2,
@@ -178,10 +178,10 @@ $facade->cancelar($evento);
 ## Usando fora do Laravel (PHP puro)
 
 ```php
-use Hyperevs\Nfse\Config\Config;
-use Hyperevs\Nfse\Facade\NfseNacionalFacade;
-use Hyperevs\Nfse\Http\Security\CertificateManager;
-use Hyperevs\Nfse\Http\Security\XmlSigner;
+use Hyperdevs\Nfse\Config\Config;
+use Hyperdevs\Nfse\Facade\NfseNacionalFacade;
+use Hyperdevs\Nfse\Http\Security\CertificateManager;
+use Hyperdevs\Nfse\Http\Security\XmlSigner;
 
 $certificateManager = CertificateManager::fromPfxFile('/caminho/certificado.pfx', 'senha');
 $xmlSigner = new XmlSigner($certificateManager->getCertificate());
@@ -209,8 +209,8 @@ cofre de segredos ou HSM), implemente `CertificateManagerInterface`/`XmlSignerIn
 substitua o binding padrão no `ServiceProvider` da sua aplicação:
 
 ```php
-$this->app->bind(\Hyperevs\Nfse\Http\Security\Contract\CertificateManagerInterface::class, MeuCertificateManager::class);
-$this->app->bind(\Hyperevs\Nfse\Http\Security\Contract\XmlSignerInterface::class, MeuXmlSigner::class);
+$this->app->bind(\Hyperdevs\Nfse\Http\Security\Contract\CertificateManagerInterface::class, MeuCertificateManager::class);
+$this->app->bind(\Hyperdevs\Nfse\Http\Security\Contract\XmlSignerInterface::class, MeuXmlSigner::class);
 ```
 
 ---

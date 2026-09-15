@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Hyperevs\Nfse\Domain\Entity;
+namespace Hyperdevs\Nfse\Domain\Entity;
 
-use Hyperevs\Nfse\Domain\Enum\FinalidadeNfse;
-use Hyperevs\Nfse\Domain\Enum\IndicadorDestinacao;
-use Hyperevs\Nfse\Domain\Enum\IndicadorFinal;
-use Hyperevs\Nfse\Domain\Enum\TipoEnteGovernamental;
-use Hyperevs\Nfse\Domain\Enum\TipoOperacao;
-use Hyperevs\Nfse\Domain\ValueObject\ChaveAcesso;
-use Hyperevs\Nfse\Domain\ValueObject\CodigoClassificacaoTributaria;
-use Hyperevs\Nfse\Domain\ValueObject\CodigoCreditoPresumido;
-use Hyperevs\Nfse\Domain\ValueObject\CodigoIndicadorOperacao;
-use Hyperevs\Nfse\Domain\ValueObject\CodigoSituacaoTributaria;
+use Hyperdevs\Nfse\Domain\Enum\FinalidadeNfse;
+use Hyperdevs\Nfse\Domain\Enum\IndicadorDestinacao;
+use Hyperdevs\Nfse\Domain\Enum\IndicadorFinal;
+use Hyperdevs\Nfse\Domain\Enum\TipoEnteGovernamental;
+use Hyperdevs\Nfse\Domain\Enum\TipoOperacao;
+use Hyperdevs\Nfse\Domain\ValueObject\ChaveAcesso;
+use Hyperdevs\Nfse\Domain\ValueObject\CodigoClassificacaoTributaria;
+use Hyperdevs\Nfse\Domain\ValueObject\CodigoCreditoPresumido;
+use Hyperdevs\Nfse\Domain\ValueObject\CodigoIndicadorOperacao;
+use Hyperdevs\Nfse\Domain\ValueObject\CodigoSituacaoTributaria;
 
 class IbsCbsInfo
 {

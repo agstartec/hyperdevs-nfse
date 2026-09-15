@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Hyperevs\Nfse\Http\Client;
+namespace Hyperdevs\Nfse\Http\Client;
 
-use Hyperevs\Nfse\Http\Contract\HttpClientInterface;
-use Hyperevs\Nfse\Http\Security\Contract\CertificateManagerInterface;
-use Hyperevs\Nfse\Http\Client\Exception\ConnectionException;
-use Hyperevs\Nfse\Http\Client\Exception\TimeoutException;
+use Hyperdevs\Nfse\Http\Contract\HttpClientInterface;
+use Hyperdevs\Nfse\Http\Security\Contract\CertificateManagerInterface;
+use Hyperdevs\Nfse\Http\Client\Exception\ConnectionException;
+use Hyperdevs\Nfse\Http\Client\Exception\TimeoutException;
 
 class CurlHttpClient implements HttpClientInterface{
     private const DEFAULT_TIMEOUT = 60;

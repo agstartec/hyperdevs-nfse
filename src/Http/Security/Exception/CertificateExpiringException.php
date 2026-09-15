@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Hyperevs\Nfse\Http\Security\Exception;
+namespace Hyperdevs\Nfse\Http\Security\Exception;
 
 /**
  * @deprecated desde v2.3.1. A lib não bloqueia mais por proximidade de vencimento

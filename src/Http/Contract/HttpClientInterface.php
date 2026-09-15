@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Hyperevs\Nfse\Http\Contract;
+namespace Hyperdevs\Nfse\Http\Contract;
 
 interface HttpClientInterface
 {

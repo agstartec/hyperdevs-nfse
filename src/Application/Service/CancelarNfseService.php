@@ -2,24 +2,24 @@
 
 declare(strict_types=1);
 
-namespace Hyperevs\Nfse\Application\Service;
+namespace Hyperdevs\Nfse\Application\Service;
 
-use Hyperevs\Nfse\Application\DTO\Request\EventoRequest;
-use Hyperevs\Nfse\Application\DTO\Response\EventoResponse;
-use Hyperevs\Nfse\Application\Exception\ServiceException;
-use Hyperevs\Nfse\Application\Exception\ValidationException;
-use Hyperevs\Nfse\Application\Validator\EventoValidator;
-use Hyperevs\Nfse\Domain\Entity\Evento;
-use Hyperevs\Nfse\Domain\Enum\TipoEvento;
-use Hyperevs\Nfse\Domain\Exception\DomainException;
-use Hyperevs\Nfse\Domain\ValueObject\ChaveAcesso;
-use Hyperevs\Nfse\Config\ApiEndpoints;
-use Hyperevs\Nfse\Http\Contract\ApiConnectorInterface;
-use Hyperevs\Nfse\Http\Exception\HttpException;
-use Hyperevs\Nfse\Http\RequestBuilder;
-use Hyperevs\Nfse\Http\Security\Contract\XmlSignerInterface;
-use Hyperevs\Nfse\Xml\Builder\Contract\XmlBuilderInterface;
-use Hyperevs\Nfse\Xml\Validator\Contract\XsdValidatorInterface;
+use Hyperdevs\Nfse\Application\DTO\Request\EventoRequest;
+use Hyperdevs\Nfse\Application\DTO\Response\EventoResponse;
+use Hyperdevs\Nfse\Application\Exception\ServiceException;
+use Hyperdevs\Nfse\Application\Exception\ValidationException;
+use Hyperdevs\Nfse\Application\Validator\EventoValidator;
+use Hyperdevs\Nfse\Domain\Entity\Evento;
+use Hyperdevs\Nfse\Domain\Enum\TipoEvento;
+use Hyperdevs\Nfse\Domain\Exception\DomainException;
+use Hyperdevs\Nfse\Domain\ValueObject\ChaveAcesso;
+use Hyperdevs\Nfse\Config\ApiEndpoints;
+use Hyperdevs\Nfse\Http\Contract\ApiConnectorInterface;
+use Hyperdevs\Nfse\Http\Exception\HttpException;
+use Hyperdevs\Nfse\Http\RequestBuilder;
+use Hyperdevs\Nfse\Http\Security\Contract\XmlSignerInterface;
+use Hyperdevs\Nfse\Xml\Builder\Contract\XmlBuilderInterface;
+use Hyperdevs\Nfse\Xml\Validator\Contract\XsdValidatorInterface;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 

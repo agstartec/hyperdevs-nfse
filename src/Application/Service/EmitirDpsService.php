@@ -2,62 +2,62 @@
 
 declare(strict_types=1);
 
-namespace Hyperevs\Nfse\Application\Service;
+namespace Hyperdevs\Nfse\Application\Service;
 
-use Hyperevs\Nfse\Application\DTO\Request\DpsRequest;
-use Hyperevs\Nfse\Application\DTO\Response\NfseResponse;
-use Hyperevs\Nfse\Application\Exception\ServiceException;
-use Hyperevs\Nfse\Application\Exception\ValidationException;
-use Hyperevs\Nfse\Application\Validator\DpsValidator;
-use Hyperevs\Nfse\Application\Validator\IbscbsResponseValidator;
-use Hyperevs\Nfse\Domain\Entity\Dps;
-use Hyperevs\Nfse\Domain\Entity\Endereco;
-use Hyperevs\Nfse\Domain\Entity\IbsCbsDest;
-use Hyperevs\Nfse\Domain\Entity\IbsCbsDiferimento;
-use Hyperevs\Nfse\Domain\Entity\IbsCbsDocumentoReeRepRes;
-use Hyperevs\Nfse\Domain\Entity\IbsCbsEnderecoExterior;
-use Hyperevs\Nfse\Domain\Entity\IbsCbsEnderecoObra;
-use Hyperevs\Nfse\Domain\Entity\IbsCbsFornecedor;
-use Hyperevs\Nfse\Domain\Entity\IbsCbsImovel;
-use Hyperevs\Nfse\Domain\Entity\IbsCbsInfo;
-use Hyperevs\Nfse\Domain\Entity\IbsCbsReeRepRes;
-use Hyperevs\Nfse\Domain\Entity\IbsCbsTribRegular;
-use Hyperevs\Nfse\Domain\Entity\Intermediario;
-use Hyperevs\Nfse\Domain\Entity\Obra;
-use Hyperevs\Nfse\Domain\Entity\Prestador;
-use Hyperevs\Nfse\Domain\Entity\Servico;
-use Hyperevs\Nfse\Domain\Entity\Substituicao;
-use Hyperevs\Nfse\Domain\Entity\Tomador;
-use Hyperevs\Nfse\Domain\Enum\FinalidadeNfse;
-use Hyperevs\Nfse\Domain\Enum\IndicadorDestinacao;
-use Hyperevs\Nfse\Domain\Enum\IndicadorFinal;
-use Hyperevs\Nfse\Domain\Enum\MotivoEmissaoTI;
-use Hyperevs\Nfse\Domain\Enum\TipoAmbiente;
-use Hyperevs\Nfse\Domain\Enum\TipoEmitente;
-use Hyperevs\Nfse\Domain\Enum\TipoEnteGovernamental;
-use Hyperevs\Nfse\Domain\Enum\TipoOperacao;
-use Hyperevs\Nfse\Domain\Enum\TipoRetencaoIssqn;
-use Hyperevs\Nfse\Domain\Enum\TributacaoIssqn;
-use Hyperevs\Nfse\Domain\Exception\DomainException;
-use Hyperevs\Nfse\Domain\ValueObject\Cep;
-use Hyperevs\Nfse\Domain\ValueObject\ChaveAcesso;
-use Hyperevs\Nfse\Domain\ValueObject\Cnpj;
-use Hyperevs\Nfse\Domain\ValueObject\CodigoCIB;
-use Hyperevs\Nfse\Domain\ValueObject\CodigoClassificacaoTributaria;
-use Hyperevs\Nfse\Domain\ValueObject\CodigoCreditoPresumido;
-use Hyperevs\Nfse\Domain\ValueObject\CodigoIndicadorOperacao;
-use Hyperevs\Nfse\Domain\ValueObject\CodigoMunicipio;
-use Hyperevs\Nfse\Domain\ValueObject\CodigoSituacaoTributaria;
-use Hyperevs\Nfse\Domain\ValueObject\Cpf;
-use Hyperevs\Nfse\Domain\ValueObject\Money;
-use Hyperevs\Nfse\Config\ApiEndpoints;
-use Hyperevs\Nfse\Http\Contract\ApiConnectorInterface;
-use Hyperevs\Nfse\Http\Exception\HttpException;
-use Hyperevs\Nfse\Http\RequestBuilder;
-use Hyperevs\Nfse\Http\Security\Contract\XmlSignerInterface;
-use Hyperevs\Nfse\Xml\Builder\Contract\XmlBuilderInterface;
-use Hyperevs\Nfse\Xml\Parser\NfseXmlParser;
-use Hyperevs\Nfse\Xml\Validator\Contract\XsdValidatorInterface;
+use Hyperdevs\Nfse\Application\DTO\Request\DpsRequest;
+use Hyperdevs\Nfse\Application\DTO\Response\NfseResponse;
+use Hyperdevs\Nfse\Application\Exception\ServiceException;
+use Hyperdevs\Nfse\Application\Exception\ValidationException;
+use Hyperdevs\Nfse\Application\Validator\DpsValidator;
+use Hyperdevs\Nfse\Application\Validator\IbscbsResponseValidator;
+use Hyperdevs\Nfse\Domain\Entity\Dps;
+use Hyperdevs\Nfse\Domain\Entity\Endereco;
+use Hyperdevs\Nfse\Domain\Entity\IbsCbsDest;
+use Hyperdevs\Nfse\Domain\Entity\IbsCbsDiferimento;
+use Hyperdevs\Nfse\Domain\Entity\IbsCbsDocumentoReeRepRes;
+use Hyperdevs\Nfse\Domain\Entity\IbsCbsEnderecoExterior;
+use Hyperdevs\Nfse\Domain\Entity\IbsCbsEnderecoObra;
+use Hyperdevs\Nfse\Domain\Entity\IbsCbsFornecedor;
+use Hyperdevs\Nfse\Domain\Entity\IbsCbsImovel;
+use Hyperdevs\Nfse\Domain\Entity\IbsCbsInfo;
+use Hyperdevs\Nfse\Domain\Entity\IbsCbsReeRepRes;
+use Hyperdevs\Nfse\Domain\Entity\IbsCbsTribRegular;
+use Hyperdevs\Nfse\Domain\Entity\Intermediario;
+use Hyperdevs\Nfse\Domain\Entity\Obra;
+use Hyperdevs\Nfse\Domain\Entity\Prestador;
+use Hyperdevs\Nfse\Domain\Entity\Servico;
+use Hyperdevs\Nfse\Domain\Entity\Substituicao;
+use Hyperdevs\Nfse\Domain\Entity\Tomador;
+use Hyperdevs\Nfse\Domain\Enum\FinalidadeNfse;
+use Hyperdevs\Nfse\Domain\Enum\IndicadorDestinacao;
+use Hyperdevs\Nfse\Domain\Enum\IndicadorFinal;
+use Hyperdevs\Nfse\Domain\Enum\MotivoEmissaoTI;
+use Hyperdevs\Nfse\Domain\Enum\TipoAmbiente;
+use Hyperdevs\Nfse\Domain\Enum\TipoEmitente;
+use Hyperdevs\Nfse\Domain\Enum\TipoEnteGovernamental;
+use Hyperdevs\Nfse\Domain\Enum\TipoOperacao;
+use Hyperdevs\Nfse\Domain\Enum\TipoRetencaoIssqn;
+use Hyperdevs\Nfse\Domain\Enum\TributacaoIssqn;
+use Hyperdevs\Nfse\Domain\Exception\DomainException;
+use Hyperdevs\Nfse\Domain\ValueObject\Cep;
+use Hyperdevs\Nfse\Domain\ValueObject\ChaveAcesso;
+use Hyperdevs\Nfse\Domain\ValueObject\Cnpj;
+use Hyperdevs\Nfse\Domain\ValueObject\CodigoCIB;
+use Hyperdevs\Nfse\Domain\ValueObject\CodigoClassificacaoTributaria;
+use Hyperdevs\Nfse\Domain\ValueObject\CodigoCreditoPresumido;
+use Hyperdevs\Nfse\Domain\ValueObject\CodigoIndicadorOperacao;
+use Hyperdevs\Nfse\Domain\ValueObject\CodigoMunicipio;
+use Hyperdevs\Nfse\Domain\ValueObject\CodigoSituacaoTributaria;
+use Hyperdevs\Nfse\Domain\ValueObject\Cpf;
+use Hyperdevs\Nfse\Domain\ValueObject\Money;
+use Hyperdevs\Nfse\Config\ApiEndpoints;
+use Hyperdevs\Nfse\Http\Contract\ApiConnectorInterface;
+use Hyperdevs\Nfse\Http\Exception\HttpException;
+use Hyperdevs\Nfse\Http\RequestBuilder;
+use Hyperdevs\Nfse\Http\Security\Contract\XmlSignerInterface;
+use Hyperdevs\Nfse\Xml\Builder\Contract\XmlBuilderInterface;
+use Hyperdevs\Nfse\Xml\Parser\NfseXmlParser;
+use Hyperdevs\Nfse\Xml\Validator\Contract\XsdValidatorInterface;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 
@@ -238,13 +238,13 @@ class EmitirDpsService
             documento: $documentoPrestador,
             inscricaoMunicipal: $request->prestador->inscricaoMunicipal,
             razaoSocial: $request->prestador->razaoSocial,
-            telefone: $request->prestador->telefone ? new \Hyperevs\Nfse\Domain\ValueObject\Telefone($request->prestador->telefone) : null,
-            email: $request->prestador->email ? new \Hyperevs\Nfse\Domain\ValueObject\Email($request->prestador->email) : null,
+            telefone: $request->prestador->telefone ? new \Hyperdevs\Nfse\Domain\ValueObject\Telefone($request->prestador->telefone) : null,
+            email: $request->prestador->email ? new \Hyperdevs\Nfse\Domain\ValueObject\Email($request->prestador->email) : null,
             endereco: $enderecoPrestador,
-            regimeTributario: \Hyperevs\Nfse\Domain\Enum\RegimeTributario::from($request->prestador->regimeTributario),
+            regimeTributario: \Hyperdevs\Nfse\Domain\Enum\RegimeTributario::from($request->prestador->regimeTributario),
             regimeEspecialTributacao: $request->prestador->regEspTrib !== null
-                ? \Hyperevs\Nfse\Domain\Enum\RegimeEspecialTributacao::from((string) $request->prestador->regEspTrib)
-                : \Hyperevs\Nfse\Domain\Enum\RegimeEspecialTributacao::NENHUM,
+                ? \Hyperdevs\Nfse\Domain\Enum\RegimeEspecialTributacao::from((string) $request->prestador->regEspTrib)
+                : \Hyperdevs\Nfse\Domain\Enum\RegimeEspecialTributacao::NENHUM,
             nif: $request->prestador->nif,
             caepf: $request->prestador->caepf,
             codigoNaoNif: $request->prestador->codigoNaoNif,
@@ -263,8 +263,8 @@ class EmitirDpsService
             $tomador = new Tomador(
                 documento: $documentoTomador,
                 razaoSocial: $request->tomador->razaoSocial,
-                telefone: $request->tomador->telefone ? new \Hyperevs\Nfse\Domain\ValueObject\Telefone($request->tomador->telefone) : null,
-                email: $request->tomador->email ? new \Hyperevs\Nfse\Domain\ValueObject\Email($request->tomador->email) : null,
+                telefone: $request->tomador->telefone ? new \Hyperdevs\Nfse\Domain\ValueObject\Telefone($request->tomador->telefone) : null,
+                email: $request->tomador->email ? new \Hyperdevs\Nfse\Domain\ValueObject\Email($request->tomador->email) : null,
                 endereco: $this->criarEnderecoPessoa(
                     $request->tomador->logradouro,
                     $request->tomador->numero,
@@ -298,8 +298,8 @@ class EmitirDpsService
                 documento: $documentoIntermediario,
                 razaoSocial: $i->razaoSocial,
                 inscricaoMunicipal: $i->inscricaoMunicipal,
-                telefone: $i->telefone ? new \Hyperevs\Nfse\Domain\ValueObject\Telefone($i->telefone) : null,
-                email: $i->email ? new \Hyperevs\Nfse\Domain\ValueObject\Email($i->email) : null,
+                telefone: $i->telefone ? new \Hyperdevs\Nfse\Domain\ValueObject\Telefone($i->telefone) : null,
+                email: $i->email ? new \Hyperdevs\Nfse\Domain\ValueObject\Email($i->email) : null,
                 endereco: $this->criarEnderecoPessoa(
                     $i->logradouro,
                     $i->numero,
@@ -326,13 +326,13 @@ class EmitirDpsService
                 $e = $o->endereco;
                 $endExt = null;
                 if ($e->endExt !== null) {
-                    $endExt = new \Hyperevs\Nfse\Domain\Entity\IbsCbsEnderecoExterior(
+                    $endExt = new \Hyperdevs\Nfse\Domain\Entity\IbsCbsEnderecoExterior(
                         cEndPost: $e->endExt->cEndPost,
                         xCidade: $e->endExt->xCidade,
                         xEstProvReg: $e->endExt->xEstProvReg,
                     );
                 }
-                $endObra = new \Hyperevs\Nfse\Domain\Entity\IbsCbsEnderecoObra(
+                $endObra = new \Hyperdevs\Nfse\Domain\Entity\IbsCbsEnderecoObra(
                     cep: $e->cep,
                     endExt: $endExt,
                     xLgr: $e->xLgr,
@@ -426,7 +426,7 @@ class EmitirDpsService
                 $dest = new IbsCbsDest(
                     cnpj: $docDest instanceof Cnpj ? $docDest : null,
                     cpf: $docDest instanceof Cpf ? $docDest : null,
-                    nif: $d->nif ? new \Hyperevs\Nfse\Domain\ValueObject\Nif($d->nif) : null,
+                    nif: $d->nif ? new \Hyperdevs\Nfse\Domain\ValueObject\Nif($d->nif) : null,
                     codigoNaoNif: $d->codigoNaoNif,
                     xNome: $d->xNome,
                     endereco: $endDest,
@@ -538,7 +538,7 @@ class EmitirDpsService
         );
     }
 
-    private function criarDocumentoReeRepRes(\Hyperevs\Nfse\Application\DTO\Request\IbsCbsDocumentoReeRepResRequest $dReq): IbsCbsDocumentoReeRepRes
+    private function criarDocumentoReeRepRes(\Hyperdevs\Nfse\Application\DTO\Request\IbsCbsDocumentoReeRepResRequest $dReq): IbsCbsDocumentoReeRepRes
     {
         $fornec = null;
         if ($dReq->fornec !== null) {
@@ -546,7 +546,7 @@ class EmitirDpsService
             $fornec = new IbsCbsFornecedor(
                 cnpj: $f->cnpj !== null ? new Cnpj($f->cnpj) : null,
                 cpf: $f->cpf !== null ? new Cpf($f->cpf) : null,
-                nif: $f->nif !== null ? new \Hyperevs\Nfse\Domain\ValueObject\Nif($f->nif) : null,
+                nif: $f->nif !== null ? new \Hyperdevs\Nfse\Domain\ValueObject\Nif($f->nif) : null,
                 codigoNaoNif: $f->codigoNaoNif,
                 xNome: $f->xNome,
             );
@@ -556,7 +556,7 @@ class EmitirDpsService
             tipo: $dReq->tipoDocumento,
             dtEmiDoc: new \DateTimeImmutable($dReq->dtEmiDoc),
             dtCompDoc: new \DateTimeImmutable($dReq->dtCompDoc),
-            tpReeRepRes: \Hyperevs\Nfse\Domain\Enum\TipoReembolsoRepasseRessarcimento::from($dReq->tpReeRepRes),
+            tpReeRepRes: \Hyperdevs\Nfse\Domain\Enum\TipoReembolsoRepasseRessarcimento::from($dReq->tpReeRepRes),
             vlrReeRepRes: (string) $dReq->vlrReeRepRes,
             fornec: $fornec,
             xTpReeRepRes: $dReq->xTpReeRepRes,
@@ -571,13 +571,13 @@ class EmitirDpsService
         );
     }
 
-    private function criarComExterior(?\Hyperevs\Nfse\Application\DTO\Request\ComExteriorRequest $req): ?\Hyperevs\Nfse\Domain\Entity\ComExterior
+    private function criarComExterior(?\Hyperdevs\Nfse\Application\DTO\Request\ComExteriorRequest $req): ?\Hyperdevs\Nfse\Domain\Entity\ComExterior
     {
         if ($req === null) {
             return null;
         }
 
-        return new \Hyperevs\Nfse\Domain\Entity\ComExterior(
+        return new \Hyperdevs\Nfse\Domain\Entity\ComExterior(
             modoPrestacao: $this->exigir($req->modoPrestacao, 'mdPrestacao'),
             vinculoPrestador: $this->exigir($req->vinculoPrestador, 'vincPrest'),
             codigoMoeda: $this->exigir($req->codigoMoeda, 'tpMoeda'),
@@ -610,7 +610,7 @@ class EmitirDpsService
         return $valor;
     }
 
-    private function criarAtvEvento(?\Hyperevs\Nfse\Application\DTO\Request\AtvEventoRequest $req): ?\Hyperevs\Nfse\Domain\Entity\AtvEvento
+    private function criarAtvEvento(?\Hyperdevs\Nfse\Application\DTO\Request\AtvEventoRequest $req): ?\Hyperdevs\Nfse\Domain\Entity\AtvEvento
     {
         if ($req === null) {
             return null;
@@ -621,13 +621,13 @@ class EmitirDpsService
         if ($req->endereco !== null) {
             $endExt = null;
             if ($req->endereco->codigoPais !== null) {
-                $endExt = new \Hyperevs\Nfse\Domain\Entity\IbsCbsEnderecoExterior(
+                $endExt = new \Hyperdevs\Nfse\Domain\Entity\IbsCbsEnderecoExterior(
                     cEndPost: $this->exigir($req->endereco->codigoPostalExterior, 'cEndPost'),
                     xCidade: $this->exigir($req->endereco->nomeCidadeExterior, 'xCidade'),
                     xEstProvReg: $this->exigir($req->endereco->estadoProvinciaExterior, 'xEstProvReg'),
                 );
             }
-            $endereco = new \Hyperevs\Nfse\Domain\Entity\IbsCbsEnderecoObra(
+            $endereco = new \Hyperdevs\Nfse\Domain\Entity\IbsCbsEnderecoObra(
                 cep: $req->endereco->codigoPais === null ? ($req->endereco->cep ?? null) : null,
                 endExt: $endExt,
                 xLgr: $this->exigir($req->endereco->logradouro, 'xLgr'),
@@ -641,7 +641,7 @@ class EmitirDpsService
             throw new \InvalidArgumentException('Atividade/Evento deve informar identificacaoEvento ou endereco');
         }
 
-        return new \Hyperevs\Nfse\Domain\Entity\AtvEvento(
+        return new \Hyperdevs\Nfse\Domain\Entity\AtvEvento(
             descricao: $this->exigir($req->descricao, 'xNome (atvEvento)'),
             dataInicio: new \DateTimeImmutable($this->exigir($req->dataInicio, 'dtIni')),
             dataFim: new \DateTimeImmutable($this->exigir($req->dataFim, 'dtFim')),
@@ -650,13 +650,13 @@ class EmitirDpsService
         );
     }
 
-    private function criarInfoCompl(?\Hyperevs\Nfse\Application\DTO\Request\InfoComplRequest $req): ?\Hyperevs\Nfse\Domain\Entity\InfoCompl
+    private function criarInfoCompl(?\Hyperdevs\Nfse\Application\DTO\Request\InfoComplRequest $req): ?\Hyperdevs\Nfse\Domain\Entity\InfoCompl
     {
         if ($req === null) {
             return null;
         }
 
-        return new \Hyperevs\Nfse\Domain\Entity\InfoCompl(
+        return new \Hyperdevs\Nfse\Domain\Entity\InfoCompl(
             idDocTecnico: $req->idDocTecnico,
             docReferencia: $req->docReferencia,
             numeroPedido: $req->numeroPedido,
@@ -666,8 +666,8 @@ class EmitirDpsService
     }
 
     /**
-     * @param \Hyperevs\Nfse\Application\DTO\Request\DocDedRedRequest[]|null $reqs
-     * @return array<int, \Hyperevs\Nfse\Domain\Entity\DocDedRed>|null
+     * @param \Hyperdevs\Nfse\Application\DTO\Request\DocDedRedRequest[]|null $reqs
+     * @return array<int, \Hyperdevs\Nfse\Domain\Entity\DocDedRed>|null
      */
     private function criarDocumentosDeducao(?array $reqs): ?array
     {
@@ -678,7 +678,7 @@ class EmitirDpsService
         // Campos obrigatórios do XSD (TCDocDedRed): a lib não presume tipo de documento,
         // tipo de dedução, data nem valores fiscais. O DpsValidator já rejeita ausências.
         return array_map(
-            fn ($d) => new \Hyperevs\Nfse\Domain\Entity\DocDedRed(
+            fn ($d) => new \Hyperdevs\Nfse\Domain\Entity\DocDedRed(
                 tipoDocumento: $this->exigir($d->tipoDocumento, 'tipoDocumento (docDedRed)'),
                 chaveNFSe: $d->chaveNFSe,
                 chaveNFe: $d->chaveNFe,
@@ -696,10 +696,10 @@ class EmitirDpsService
                 valorDedutivel: $this->exigir($d->valorDedutivel, 'vDedutivelRedutivel'),
                 valorDeducao: $this->exigir($d->valorDeducao, 'vDeducaoReducao'),
                 fornecedor: $d->fornecedor !== null
-                    ? new \Hyperevs\Nfse\Domain\Entity\IbsCbsFornecedor(
+                    ? new \Hyperdevs\Nfse\Domain\Entity\IbsCbsFornecedor(
                         cnpj: $d->fornecedor->cnpj !== null ? new Cnpj($d->fornecedor->cnpj) : null,
                         cpf: $d->fornecedor->cpf !== null ? new Cpf($d->fornecedor->cpf) : null,
-                        nif: $d->fornecedor->nif !== null ? new \Hyperevs\Nfse\Domain\ValueObject\Nif($d->fornecedor->nif) : null,
+                        nif: $d->fornecedor->nif !== null ? new \Hyperdevs\Nfse\Domain\ValueObject\Nif($d->fornecedor->nif) : null,
                         codigoNaoNif: $d->fornecedor->codigoNaoNif,
                         xNome: $d->fornecedor->xNome,
                     )
@@ -709,38 +709,38 @@ class EmitirDpsService
         );
     }
 
-    private function criarExigSusp(?\Hyperevs\Nfse\Application\DTO\Request\ExigSuspRequest $req): ?\Hyperevs\Nfse\Domain\Entity\ExigSusp
+    private function criarExigSusp(?\Hyperdevs\Nfse\Application\DTO\Request\ExigSuspRequest $req): ?\Hyperdevs\Nfse\Domain\Entity\ExigSusp
     {
         if ($req === null) {
             return null;
         }
 
-        return new \Hyperevs\Nfse\Domain\Entity\ExigSusp(
+        return new \Hyperdevs\Nfse\Domain\Entity\ExigSusp(
             tipoSuspensao: $req->tipoSuspensao,
             numeroProcesso: $req->numeroProcesso,
         );
     }
 
-    private function criarBeneficioMunicipal(?\Hyperevs\Nfse\Application\DTO\Request\BeneficioMunicipalRequest $req): ?\Hyperevs\Nfse\Domain\Entity\BeneficioMunicipal
+    private function criarBeneficioMunicipal(?\Hyperdevs\Nfse\Application\DTO\Request\BeneficioMunicipalRequest $req): ?\Hyperdevs\Nfse\Domain\Entity\BeneficioMunicipal
     {
         if ($req === null) {
             return null;
         }
 
-        return new \Hyperevs\Nfse\Domain\Entity\BeneficioMunicipal(
+        return new \Hyperdevs\Nfse\Domain\Entity\BeneficioMunicipal(
             numeroBeneficio: $req->numeroBeneficio,
             valorReducaoBC: $req->valorReducaoBC,
             percentualReducaoBC: $req->percentualReducaoBC,
         );
     }
 
-    private function criarTribFederal(?\Hyperevs\Nfse\Application\DTO\Request\TribFederalRequest $req): ?\Hyperevs\Nfse\Domain\Entity\TribFederal
+    private function criarTribFederal(?\Hyperdevs\Nfse\Application\DTO\Request\TribFederalRequest $req): ?\Hyperdevs\Nfse\Domain\Entity\TribFederal
     {
         if ($req === null) {
             return null;
         }
 
-        return new \Hyperevs\Nfse\Domain\Entity\TribFederal(
+        return new \Hyperdevs\Nfse\Domain\Entity\TribFederal(
             pisCofinsCst: $req->pisCofinsCst,
             pisCofinsTipo: $req->pisCofinsTipo,
             pisCofinsAliquotaPis: $req->pisCofinsAliquotaPis,

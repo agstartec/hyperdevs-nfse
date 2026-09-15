@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Hyperevs\Nfse\Http;
+namespace Hyperdevs\Nfse\Http;
 
-use Hyperevs\Nfse\Http\Contract\ApiConnectorInterface;
-use Hyperevs\Nfse\Config\Config;
-use Hyperevs\Nfse\Http\Contract\HttpClientInterface;
+use Hyperdevs\Nfse\Http\Contract\ApiConnectorInterface;
+use Hyperdevs\Nfse\Config\Config;
+use Hyperdevs\Nfse\Http\Contract\HttpClientInterface;
 
 class ApiConnector implements ApiConnectorInterface
 {

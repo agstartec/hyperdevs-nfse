@@ -1,13 +1,13 @@
 <?php
-namespace Hyperevs\Nfse\Config;
-use Hyperevs\Nfse\Config\Exception\ConfigException;
-use Hyperevs\Nfse\Config\Contract\ConfigInterface;
-use Hyperevs\Nfse\Domain\Enum\TipoAmbiente;
+namespace Hyperdevs\Nfse\Config;
+use Hyperdevs\Nfse\Config\Exception\ConfigException;
+use Hyperdevs\Nfse\Config\Contract\ConfigInterface;
+use Hyperdevs\Nfse\Domain\Enum\TipoAmbiente;
 use Composer\InstalledVersions;
 
 class Config implements ConfigInterface
 {
-    private const PACKAGE_NAME = 'hyperevs/nfse';
+    private const PACKAGE_NAME = 'hyperdevs/nfse';
 
     /** @var array<string, mixed> */
     private array $config;

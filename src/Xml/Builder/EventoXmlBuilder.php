@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Hyperevs\Nfse\Xml\Builder;
+namespace Hyperdevs\Nfse\Xml\Builder;
 
-use Hyperevs\Nfse\Domain\Entity\Evento;
-use Hyperevs\Nfse\Domain\Enum\TipoEvento;
+use Hyperdevs\Nfse\Domain\Entity\Evento;
+use Hyperdevs\Nfse\Domain\Enum\TipoEvento;
 use NFePHP\Common\DOMImproved as Dom;
 
 class EventoXmlBuilder implements Contract\XmlBuilderInterface

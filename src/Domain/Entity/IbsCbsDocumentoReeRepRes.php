@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Hyperevs\Nfse\Domain\Entity;
+namespace Hyperdevs\Nfse\Domain\Entity;
 
-use Hyperevs\Nfse\Domain\Enum\TipoReembolsoRepasseRessarcimento;
+use Hyperdevs\Nfse\Domain\Enum\TipoReembolsoRepasseRessarcimento;
 
 class IbsCbsDocumentoReeRepRes
 {

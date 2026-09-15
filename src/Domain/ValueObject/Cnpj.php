@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Hyperevs\Nfse\Domain\ValueObject;
+namespace Hyperdevs\Nfse\Domain\ValueObject;
 
-use Hyperevs\Nfse\Domain\Exception\InvalidCnpjException;
+use Hyperdevs\Nfse\Domain\Exception\InvalidCnpjException;
 
 final readonly class Cnpj
 {

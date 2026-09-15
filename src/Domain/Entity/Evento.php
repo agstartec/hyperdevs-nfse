@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Hyperevs\Nfse\Domain\Entity;
+namespace Hyperdevs\Nfse\Domain\Entity;
 
-use Hyperevs\Nfse\Domain\Contract\EventoInterface;
-use Hyperevs\Nfse\Domain\Enum\TipoAmbiente;
-use Hyperevs\Nfse\Domain\Enum\TipoEvento;
-use Hyperevs\Nfse\Domain\ValueObject\ChaveAcesso;
+use Hyperdevs\Nfse\Domain\Contract\EventoInterface;
+use Hyperdevs\Nfse\Domain\Enum\TipoAmbiente;
+use Hyperdevs\Nfse\Domain\Enum\TipoEvento;
+use Hyperdevs\Nfse\Domain\ValueObject\ChaveAcesso;
 
 class Evento implements EventoInterface
 {

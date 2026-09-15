@@ -2,36 +2,36 @@
 
 declare(strict_types=1);
 
-namespace Hyperevs\Nfse\Application\Validator;
+namespace Hyperdevs\Nfse\Application\Validator;
 
-use Hyperevs\Nfse\Application\DTO\Request\DpsRequest;
-use Hyperevs\Nfse\Application\DTO\Request\IbsCbsFornecedorRequest;
-use Hyperevs\Nfse\Application\DTO\Request\IbsCbsRequest;
-use Hyperevs\Nfse\Application\DTO\Request\ServicoRequest;
-use Hyperevs\Nfse\Application\Exception\ValidationException;
-use Hyperevs\Nfse\Domain\Contract\CstClassTribRepository;
-use Hyperevs\Nfse\Domain\Enum\CausaNaoNif;
-use Hyperevs\Nfse\Domain\Enum\EnviarMdic;
-use Hyperevs\Nfse\Domain\Enum\FinalidadeNfse;
-use Hyperevs\Nfse\Domain\Enum\IndicadorDestinacao;
-use Hyperevs\Nfse\Domain\Enum\IndicadorFinal;
-use Hyperevs\Nfse\Domain\Enum\MecanismoApoioPrestador;
-use Hyperevs\Nfse\Domain\Enum\MecanismoApoioTomador;
-use Hyperevs\Nfse\Domain\Enum\ModoPrestacao;
-use Hyperevs\Nfse\Domain\Enum\MotivoEmissaoTI;
-use Hyperevs\Nfse\Domain\Enum\MotivoSubstituicao;
-use Hyperevs\Nfse\Domain\Enum\MovimentacaoTemporaria;
-use Hyperevs\Nfse\Domain\Enum\RegimeEspecialTributacao;
-use Hyperevs\Nfse\Domain\Enum\RegimeTributario;
-use Hyperevs\Nfse\Domain\Enum\TipoAmbiente;
-use Hyperevs\Nfse\Domain\Enum\TipoChaveDocumentoFiscal;
-use Hyperevs\Nfse\Domain\Enum\TipoEmitente;
-use Hyperevs\Nfse\Domain\Enum\TipoEnteGovernamental;
-use Hyperevs\Nfse\Domain\Enum\TipoOperacao;
-use Hyperevs\Nfse\Domain\Enum\TipoReembolsoRepasseRessarcimento;
-use Hyperevs\Nfse\Domain\Enum\TipoRetencaoIssqn;
-use Hyperevs\Nfse\Domain\Enum\TributacaoIssqn;
-use Hyperevs\Nfse\Domain\Enum\VinculoPrestador;
+use Hyperdevs\Nfse\Application\DTO\Request\DpsRequest;
+use Hyperdevs\Nfse\Application\DTO\Request\IbsCbsFornecedorRequest;
+use Hyperdevs\Nfse\Application\DTO\Request\IbsCbsRequest;
+use Hyperdevs\Nfse\Application\DTO\Request\ServicoRequest;
+use Hyperdevs\Nfse\Application\Exception\ValidationException;
+use Hyperdevs\Nfse\Domain\Contract\CstClassTribRepository;
+use Hyperdevs\Nfse\Domain\Enum\CausaNaoNif;
+use Hyperdevs\Nfse\Domain\Enum\EnviarMdic;
+use Hyperdevs\Nfse\Domain\Enum\FinalidadeNfse;
+use Hyperdevs\Nfse\Domain\Enum\IndicadorDestinacao;
+use Hyperdevs\Nfse\Domain\Enum\IndicadorFinal;
+use Hyperdevs\Nfse\Domain\Enum\MecanismoApoioPrestador;
+use Hyperdevs\Nfse\Domain\Enum\MecanismoApoioTomador;
+use Hyperdevs\Nfse\Domain\Enum\ModoPrestacao;
+use Hyperdevs\Nfse\Domain\Enum\MotivoEmissaoTI;
+use Hyperdevs\Nfse\Domain\Enum\MotivoSubstituicao;
+use Hyperdevs\Nfse\Domain\Enum\MovimentacaoTemporaria;
+use Hyperdevs\Nfse\Domain\Enum\RegimeEspecialTributacao;
+use Hyperdevs\Nfse\Domain\Enum\RegimeTributario;
+use Hyperdevs\Nfse\Domain\Enum\TipoAmbiente;
+use Hyperdevs\Nfse\Domain\Enum\TipoChaveDocumentoFiscal;
+use Hyperdevs\Nfse\Domain\Enum\TipoEmitente;
+use Hyperdevs\Nfse\Domain\Enum\TipoEnteGovernamental;
+use Hyperdevs\Nfse\Domain\Enum\TipoOperacao;
+use Hyperdevs\Nfse\Domain\Enum\TipoReembolsoRepasseRessarcimento;
+use Hyperdevs\Nfse\Domain\Enum\TipoRetencaoIssqn;
+use Hyperdevs\Nfse\Domain\Enum\TributacaoIssqn;
+use Hyperdevs\Nfse\Domain\Enum\VinculoPrestador;
 
 class DpsValidator
 {

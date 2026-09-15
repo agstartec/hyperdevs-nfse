@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Hyperevs\Nfse\Application\Exception;
+namespace Hyperdevs\Nfse\Application\Exception;
 
 class ServiceException extends ApplicationException
 {

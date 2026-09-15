@@ -1,10 +1,10 @@
 {
-    "name": "hyperevs/nfse",
+    "name": "hyperdevs/nfse",
     "description": "Biblioteca para integração de NFS-e",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Hyperevs\\Nfse\\": "src/"
+            "Hyperdevs\\Nfse\\": "src/"
         }
     },
     "require": {
@@ -22,7 +22,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Hyperevs\\Nfse\\Provider\\NfseProvider"
+                "Hyperdevs\\Nfse\\Provider\\NfseProvider"
             ]
         }
     },

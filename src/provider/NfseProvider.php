@@ -1,13 +1,13 @@
 <?php
 
-namespace Hyperevs\Nfse\Provider;
+namespace Hyperdevs\Nfse\Provider;
 
-use Hyperevs\Nfse\Config\Config;
-use Hyperevs\Nfse\Facade\NfseNacionalFacade;
-use Hyperevs\Nfse\Http\Security\CertificateManager;
-use Hyperevs\Nfse\Http\Security\Contract\CertificateManagerInterface;
-use Hyperevs\Nfse\Http\Security\Contract\XmlSignerInterface;
-use Hyperevs\Nfse\Http\Security\XmlSigner;
+use Hyperdevs\Nfse\Config\Config;
+use Hyperdevs\Nfse\Facade\NfseNacionalFacade;
+use Hyperdevs\Nfse\Http\Security\CertificateManager;
+use Hyperdevs\Nfse\Http\Security\Contract\CertificateManagerInterface;
+use Hyperdevs\Nfse\Http\Security\Contract\XmlSignerInterface;
+use Hyperdevs\Nfse\Http\Security\XmlSigner;
 use Illuminate\Support\ServiceProvider;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;

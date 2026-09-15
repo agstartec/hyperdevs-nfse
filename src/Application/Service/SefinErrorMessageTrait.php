@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Hyperevs\Nfse\Application\Service;
+namespace Hyperdevs\Nfse\Application\Service;
 
 /**
  * Extrai a mensagem de erro real da resposta da SEFIN.

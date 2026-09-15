@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Hyperevs\Nfse\Xml\Validator;
+namespace Hyperdevs\Nfse\Xml\Validator;
 
-use Hyperevs\Nfse\Domain\Enum\VersaoSchema;
-use Hyperevs\Nfse\Xml\Exception\XmlValidationException;
-use Hyperevs\Nfse\Xml\Validator\Contract\XsdValidatorInterface;
+use Hyperdevs\Nfse\Domain\Enum\VersaoSchema;
+use Hyperdevs\Nfse\Xml\Exception\XmlValidationException;
+use Hyperdevs\Nfse\Xml\Validator\Contract\XsdValidatorInterface;
 
 class XsdValidator implements XsdValidatorInterface
 {

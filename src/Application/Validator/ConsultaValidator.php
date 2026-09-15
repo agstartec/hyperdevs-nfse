@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Hyperevs\Nfse\Application\Validator;
+namespace Hyperdevs\Nfse\Application\Validator;
 
-use Hyperevs\Nfse\Application\DTO\Request\ConsultaRequest;
-use Hyperevs\Nfse\Application\Exception\ValidationException;
+use Hyperdevs\Nfse\Application\DTO\Request\ConsultaRequest;
+use Hyperdevs\Nfse\Application\Exception\ValidationException;
 
 class ConsultaValidator
 {

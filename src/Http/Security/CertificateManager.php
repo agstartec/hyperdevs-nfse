@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Hyperevs\Nfse\Http\Security;
+namespace Hyperdevs\Nfse\Http\Security;
 
-use Hyperevs\Nfse\Http\Security\Contract\CertificateManagerInterface;
-use Hyperevs\Nfse\Http\Security\Exception\CertificateException;
-use Hyperevs\Nfse\Http\Security\Exception\CertificateExpiredException;
+use Hyperdevs\Nfse\Http\Security\Contract\CertificateManagerInterface;
+use Hyperdevs\Nfse\Http\Security\Exception\CertificateException;
+use Hyperdevs\Nfse\Http\Security\Exception\CertificateExpiredException;
 
 final class CertificateManager implements CertificateManagerInterface
 {

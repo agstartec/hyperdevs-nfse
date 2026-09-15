@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Hyperevs\Nfse\Application\Validator;
+namespace Hyperdevs\Nfse\Application\Validator;
 
-use Hyperevs\Nfse\Application\DTO\Request\EventoRequest;
-use Hyperevs\Nfse\Application\Exception\ValidationException;
-use Hyperevs\Nfse\Domain\Enum\MotivoCancelamento;
-use Hyperevs\Nfse\Domain\Enum\MotivoRejeicao;
-use Hyperevs\Nfse\Domain\Enum\MotivoSubstituicao;
-use Hyperevs\Nfse\Domain\Enum\TipoEvento;
+use Hyperdevs\Nfse\Application\DTO\Request\EventoRequest;
+use Hyperdevs\Nfse\Application\Exception\ValidationException;
+use Hyperdevs\Nfse\Domain\Enum\MotivoCancelamento;
+use Hyperdevs\Nfse\Domain\Enum\MotivoRejeicao;
+use Hyperdevs\Nfse\Domain\Enum\MotivoSubstituicao;
+use Hyperdevs\Nfse\Domain\Enum\TipoEvento;
 
 class EventoValidator
 {

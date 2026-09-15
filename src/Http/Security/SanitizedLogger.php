@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Hyperevs\Nfse\Http\Security;
+namespace Hyperdevs\Nfse\Http\Security;
 
 use Psr\Log\AbstractLogger;
 

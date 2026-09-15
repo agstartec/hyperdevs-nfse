@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Hyperevs\Nfse\Http\Security\Contract;
+namespace Hyperdevs\Nfse\Http\Security\Contract;
 
-use Hyperevs\Nfse\Http\Security\Certificate;
+use Hyperdevs\Nfse\Http\Security\Certificate;
 
 interface CertificateManagerInterface
 {

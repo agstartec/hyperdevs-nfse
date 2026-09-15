@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Hyperevs\Nfse\Xml\Builder;
+namespace Hyperdevs\Nfse\Xml\Builder;
 
-use Hyperevs\Nfse\Domain\Entity\Dps;
-use Hyperevs\Nfse\Domain\Entity\Endereco;
-use Hyperevs\Nfse\Domain\Entity\IbsCbsDest;
-use Hyperevs\Nfse\Domain\Entity\IbsCbsInfo;
-use Hyperevs\Nfse\Domain\Entity\Intermediario;
-use Hyperevs\Nfse\Domain\Entity\Prestador;
-use Hyperevs\Nfse\Domain\Entity\Servico;
-use Hyperevs\Nfse\Domain\Entity\Substituicao;
-use Hyperevs\Nfse\Domain\Entity\Tomador;
-use Hyperevs\Nfse\Domain\Enum\TipoEmitente;
-use Hyperevs\Nfse\Domain\ValueObject\ChaveAcesso;
+use Hyperdevs\Nfse\Domain\Entity\Dps;
+use Hyperdevs\Nfse\Domain\Entity\Endereco;
+use Hyperdevs\Nfse\Domain\Entity\IbsCbsDest;
+use Hyperdevs\Nfse\Domain\Entity\IbsCbsInfo;
+use Hyperdevs\Nfse\Domain\Entity\Intermediario;
+use Hyperdevs\Nfse\Domain\Entity\Prestador;
+use Hyperdevs\Nfse\Domain\Entity\Servico;
+use Hyperdevs\Nfse\Domain\Entity\Substituicao;
+use Hyperdevs\Nfse\Domain\Entity\Tomador;
+use Hyperdevs\Nfse\Domain\Enum\TipoEmitente;
+use Hyperdevs\Nfse\Domain\ValueObject\ChaveAcesso;
 use NFePHP\Common\DOMImproved as Dom;
 
 class DpsXmlBuilder implements Contract\XmlBuilderInterface
@@ -295,7 +295,7 @@ class DpsXmlBuilder implements Contract\XmlBuilderInterface
         }
     }
 
-    private function buildComExterior(\DOMNode $parent, \Hyperevs\Nfse\Domain\Entity\ComExterior $comExt): void
+    private function buildComExterior(\DOMNode $parent, \Hyperdevs\Nfse\Domain\Entity\ComExterior $comExt): void
     {
         $node = $this->dom->createElement('comExt');
         $parent->appendChild($node);
@@ -315,7 +315,7 @@ class DpsXmlBuilder implements Contract\XmlBuilderInterface
         $this->addChild($node, 'mdic', $comExt->getEnviarMDIC(), true);
     }
 
-    private function buildAtvEvento(\DOMNode $parent, \Hyperevs\Nfse\Domain\Entity\AtvEvento $atv): void
+    private function buildAtvEvento(\DOMNode $parent, \Hyperdevs\Nfse\Domain\Entity\AtvEvento $atv): void
     {
         $node = $this->dom->createElement('atvEvento');
         $parent->appendChild($node);
@@ -329,7 +329,7 @@ class DpsXmlBuilder implements Contract\XmlBuilderInterface
         }
     }
 
-    private function buildAtvEventoEndereco(\DOMNode $parent, \Hyperevs\Nfse\Domain\Entity\IbsCbsEnderecoObra $end): void
+    private function buildAtvEventoEndereco(\DOMNode $parent, \Hyperdevs\Nfse\Domain\Entity\IbsCbsEnderecoObra $end): void
     {
         $endNode = $this->dom->createElement('end');
         $parent->appendChild($endNode);
@@ -351,7 +351,7 @@ class DpsXmlBuilder implements Contract\XmlBuilderInterface
         $this->addChild($endNode, 'xBairro', $end->getXBairro(), true);
     }
 
-    private function buildInfoCompl(\DOMNode $parent, \Hyperevs\Nfse\Domain\Entity\InfoCompl $info): void
+    private function buildInfoCompl(\DOMNode $parent, \Hyperdevs\Nfse\Domain\Entity\InfoCompl $info): void
     {
         $node = $this->dom->createElement('infoCompl');
         $parent->appendChild($node);
@@ -376,7 +376,7 @@ class DpsXmlBuilder implements Contract\XmlBuilderInterface
         }
     }
 
-    private function buildObra(\DOMNode $parent, \Hyperevs\Nfse\Domain\Entity\Obra $obra): void
+    private function buildObra(\DOMNode $parent, \Hyperdevs\Nfse\Domain\Entity\Obra $obra): void
     {
         $node = $this->dom->createElement('obra');
         $parent->appendChild($node);
@@ -392,7 +392,7 @@ class DpsXmlBuilder implements Contract\XmlBuilderInterface
         }
     }
 
-    private function buildObraEndereco(\DOMNode $parent, \Hyperevs\Nfse\Domain\Entity\IbsCbsEnderecoObra $end): void
+    private function buildObraEndereco(\DOMNode $parent, \Hyperdevs\Nfse\Domain\Entity\IbsCbsEnderecoObra $end): void
     {
         $endNode = $this->dom->createElement('end');
         $parent->appendChild($endNode);
@@ -484,7 +484,7 @@ class DpsXmlBuilder implements Contract\XmlBuilderInterface
         $this->buildTotTrib($tribNode, $servico);
     }
 
-    private function buildExigSusp(\DOMNode $parent, \Hyperevs\Nfse\Domain\Entity\ExigSusp $exigSusp): void
+    private function buildExigSusp(\DOMNode $parent, \Hyperdevs\Nfse\Domain\Entity\ExigSusp $exigSusp): void
     {
         $node = $this->dom->createElement('exigSusp');
         $parent->appendChild($node);
@@ -492,7 +492,7 @@ class DpsXmlBuilder implements Contract\XmlBuilderInterface
         $this->addChild($node, 'nProcesso', $exigSusp->getNumeroProcesso(), true);
     }
 
-    private function buildTribFederal(\DOMNode $parent, \Hyperevs\Nfse\Domain\Entity\TribFederal $tribFed): void
+    private function buildTribFederal(\DOMNode $parent, \Hyperdevs\Nfse\Domain\Entity\TribFederal $tribFed): void
     {
         $node = $this->dom->createElement('tribFed');
         $parent->appendChild($node);
@@ -538,7 +538,7 @@ class DpsXmlBuilder implements Contract\XmlBuilderInterface
         }
     }
 
-    /** @param \Hyperevs\Nfse\Domain\Entity\DocDedRed[] $docs */
+    /** @param \Hyperdevs\Nfse\Domain\Entity\DocDedRed[] $docs */
     private function buildDedRed(\DOMNode $parent, array $docs): void
     {
         $vDedRed = $this->dom->createElement('vDedRed');
@@ -586,7 +586,7 @@ class DpsXmlBuilder implements Contract\XmlBuilderInterface
         }
     }
 
-    private function buildDocNFSeMun(\DOMNode $parent, \Hyperevs\Nfse\Domain\Entity\DocDedRed $doc): void
+    private function buildDocNFSeMun(\DOMNode $parent, \Hyperdevs\Nfse\Domain\Entity\DocDedRed $doc): void
     {
         $node = $this->dom->createElement('NFSeMun');
         $parent->appendChild($node);
@@ -595,7 +595,7 @@ class DpsXmlBuilder implements Contract\XmlBuilderInterface
         $this->addChild($node, 'cVerifNFSeMun', $doc->getCodigoVerificacaoNFSe() ?? '', true);
     }
 
-    private function buildDocNFNFS(\DOMNode $parent, \Hyperevs\Nfse\Domain\Entity\DocDedRed $doc): void
+    private function buildDocNFNFS(\DOMNode $parent, \Hyperdevs\Nfse\Domain\Entity\DocDedRed $doc): void
     {
         $node = $this->dom->createElement('NFNFS');
         $parent->appendChild($node);
@@ -732,7 +732,7 @@ class DpsXmlBuilder implements Contract\XmlBuilderInterface
         $this->addChild($destNode, 'email', $dest->getEmail(), false);
     }
 
-    private function buildIbscbsImovel(\DOMNode $parent, \Hyperevs\Nfse\Domain\Entity\IbsCbsImovel $imovel): void
+    private function buildIbscbsImovel(\DOMNode $parent, \Hyperdevs\Nfse\Domain\Entity\IbsCbsImovel $imovel): void
     {
         $node = $this->dom->createElement('imovel');
         $parent->appendChild($node);
@@ -750,7 +750,7 @@ class DpsXmlBuilder implements Contract\XmlBuilderInterface
         }
     }
 
-    private function buildIbscbsEnderecoObra(\DOMNode $parent, \Hyperevs\Nfse\Domain\Entity\IbsCbsEnderecoObra $end): void
+    private function buildIbscbsEnderecoObra(\DOMNode $parent, \Hyperdevs\Nfse\Domain\Entity\IbsCbsEnderecoObra $end): void
     {
         $endNode = $this->dom->createElement('end');
         $parent->appendChild($endNode);
@@ -806,7 +806,7 @@ class DpsXmlBuilder implements Contract\XmlBuilderInterface
         }
     }
 
-    private function buildGReeRepRes(\DOMNode $parent, \Hyperevs\Nfse\Domain\Entity\IbsCbsReeRepRes $reeRepRes): void
+    private function buildGReeRepRes(\DOMNode $parent, \Hyperdevs\Nfse\Domain\Entity\IbsCbsReeRepRes $reeRepRes): void
     {
         $gNode = $this->dom->createElement('gReeRepRes');
         $parent->appendChild($gNode);
@@ -834,7 +834,7 @@ class DpsXmlBuilder implements Contract\XmlBuilderInterface
         }
     }
 
-    private function buildDocDFeNacional(\DOMNode $parent, \Hyperevs\Nfse\Domain\Entity\IbsCbsDocumentoReeRepRes $doc): void
+    private function buildDocDFeNacional(\DOMNode $parent, \Hyperdevs\Nfse\Domain\Entity\IbsCbsDocumentoReeRepRes $doc): void
     {
         $node = $this->dom->createElement('dFeNacional');
         $parent->appendChild($node);
@@ -843,7 +843,7 @@ class DpsXmlBuilder implements Contract\XmlBuilderInterface
         $this->addChild($node, 'chaveDFe', $doc->getChaveDFe(), true);
     }
 
-    private function buildDocFiscalOutro(\DOMNode $parent, \Hyperevs\Nfse\Domain\Entity\IbsCbsDocumentoReeRepRes $doc): void
+    private function buildDocFiscalOutro(\DOMNode $parent, \Hyperdevs\Nfse\Domain\Entity\IbsCbsDocumentoReeRepRes $doc): void
     {
         $node = $this->dom->createElement('docFiscalOutro');
         $parent->appendChild($node);
@@ -852,7 +852,7 @@ class DpsXmlBuilder implements Contract\XmlBuilderInterface
         $this->addChild($node, 'xDocFiscal', $doc->getXDocFiscal(), true);
     }
 
-    private function buildDocOutro(\DOMNode $parent, \Hyperevs\Nfse\Domain\Entity\IbsCbsDocumentoReeRepRes $doc): void
+    private function buildDocOutro(\DOMNode $parent, \Hyperdevs\Nfse\Domain\Entity\IbsCbsDocumentoReeRepRes $doc): void
     {
         $node = $this->dom->createElement('docOutro');
         $parent->appendChild($node);
@@ -860,7 +860,7 @@ class DpsXmlBuilder implements Contract\XmlBuilderInterface
         $this->addChild($node, 'xDoc', $doc->getXDoc(), true);
     }
 
-    private function buildDocFornec(\DOMNode $parent, \Hyperevs\Nfse\Domain\Entity\IbsCbsFornecedor $fornec): void
+    private function buildDocFornec(\DOMNode $parent, \Hyperdevs\Nfse\Domain\Entity\IbsCbsFornecedor $fornec): void
     {
         $node = $this->dom->createElement('fornec');
         $parent->appendChild($node);

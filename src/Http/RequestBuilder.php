@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Hyperevs\Nfse\Http;
+namespace Hyperdevs\Nfse\Http;
 
 class RequestBuilder
 {

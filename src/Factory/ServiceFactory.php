@@ -2,29 +2,29 @@
 
 declare(strict_types=1);
 
-namespace Hyperevs\Nfse\Factory;
+namespace Hyperdevs\Nfse\Factory;
 
-use Hyperevs\Nfse\Application\Service\CancelarNfseService;
-use Hyperevs\Nfse\Application\Service\ConsultarNfseService;
-use Hyperevs\Nfse\Application\Service\EmitirDpsService;
-use Hyperevs\Nfse\Application\Validator\ConsultaValidator;
-use Hyperevs\Nfse\Application\Validator\DpsValidator;
-use Hyperevs\Nfse\Application\Validator\EventoValidator;
-use Hyperevs\Nfse\Application\Validator\IbscbsResponseValidator;
-use Hyperevs\Nfse\Domain\Contract\CstClassTribRepository;
-use Hyperevs\Nfse\Config\ApiEndpoints;
-use Hyperevs\Nfse\Config\Config;
-use Hyperevs\Nfse\Http\ApiConnector;
-use Hyperevs\Nfse\Http\Client\CurlHttpClient;
-use Hyperevs\Nfse\Http\RequestBuilder;
-use Hyperevs\Nfse\Repository\CachedCstClassTribRepository;
-use Hyperevs\Nfse\Repository\FileCstClassTribRepository;
-use Hyperevs\Nfse\Http\Security\Contract\CertificateManagerInterface;
-use Hyperevs\Nfse\Http\Security\Contract\XmlSignerInterface;
-use Hyperevs\Nfse\Xml\Builder\DpsXmlBuilder;
-use Hyperevs\Nfse\Xml\Builder\EventoXmlBuilder;
-use Hyperevs\Nfse\Xml\Parser\NfseXmlParser;
-use Hyperevs\Nfse\Xml\Validator\XsdValidator;
+use Hyperdevs\Nfse\Application\Service\CancelarNfseService;
+use Hyperdevs\Nfse\Application\Service\ConsultarNfseService;
+use Hyperdevs\Nfse\Application\Service\EmitirDpsService;
+use Hyperdevs\Nfse\Application\Validator\ConsultaValidator;
+use Hyperdevs\Nfse\Application\Validator\DpsValidator;
+use Hyperdevs\Nfse\Application\Validator\EventoValidator;
+use Hyperdevs\Nfse\Application\Validator\IbscbsResponseValidator;
+use Hyperdevs\Nfse\Domain\Contract\CstClassTribRepository;
+use Hyperdevs\Nfse\Config\ApiEndpoints;
+use Hyperdevs\Nfse\Config\Config;
+use Hyperdevs\Nfse\Http\ApiConnector;
+use Hyperdevs\Nfse\Http\Client\CurlHttpClient;
+use Hyperdevs\Nfse\Http\RequestBuilder;
+use Hyperdevs\Nfse\Repository\CachedCstClassTribRepository;
+use Hyperdevs\Nfse\Repository\FileCstClassTribRepository;
+use Hyperdevs\Nfse\Http\Security\Contract\CertificateManagerInterface;
+use Hyperdevs\Nfse\Http\Security\Contract\XmlSignerInterface;
+use Hyperdevs\Nfse\Xml\Builder\DpsXmlBuilder;
+use Hyperdevs\Nfse\Xml\Builder\EventoXmlBuilder;
+use Hyperdevs\Nfse\Xml\Parser\NfseXmlParser;
+use Hyperdevs\Nfse\Xml\Validator\XsdValidator;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 
