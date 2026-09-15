@@ -49,7 +49,7 @@ class Config implements ConfigInterface
 
      private function loadPrefeituras(): array
     {
-        $configFile = __DIR__ . '/../../../storage/prefeituras.json';
+        $configFile = __DIR__ . '/../../Storage/prefeituras.json';
         if (!file_exists($configFile)) {
             return [];
         }
