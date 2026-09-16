@@ -2,12 +2,7 @@
 
 namespace Hyperdevs\Nfse\Provider;
 
-use Hyperdevs\Nfse\Config\Config;
 use Hyperdevs\Nfse\Facade\NfseNacionalFacade;
-use Hyperdevs\Nfse\Http\Security\CertificateManager;
-use Hyperdevs\Nfse\Http\Security\Contract\CertificateManagerInterface;
-use Hyperdevs\Nfse\Http\Security\Contract\XmlSignerInterface;
-use Hyperdevs\Nfse\Http\Security\XmlSigner;
 use Illuminate\Support\ServiceProvider;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
@@ -21,41 +16,18 @@ class NfseProvider extends ServiceProvider
     {
         $this->mergeConfigFrom(__DIR__ . '/../../config/nfse.php', 'nfse');
 
-        $this->app->singleton(Config::class, function ($app) {
-            return new Config([
-                'tpAmb' => $app['config']['nfse.tp_amb'],
-                'prefeitura' => $app['config']['nfse.prefeitura'],
-                'tipoApi' => $app['config']['nfse.tipo_api'],
-            ]);
-        });
-
-        // Implementação padrão (PFX + senha via .env), sem dependência do NFePHP.
-        // Para usar outra fonte de certificado, sobrescreva o binding no ServiceProvider
-        // da sua aplicação: $this->app->bind(CertificateManagerInterface::class, ...).
-        $this->app->singleton(CertificateManagerInterface::class, function ($app) {
-            $path = $app['config']['nfse.certificado.path'];
-            $senha = (string) $app['config']['nfse.certificado.senha'];
-
-            if (empty($path)) {
-                throw new \RuntimeException(
-                    'Configure NFSE_CERTIFICADO_PATH e NFSE_CERTIFICADO_SENHA no .env, ou vincule sua própria implementação de CertificateManagerInterface.'
-                );
-            }
-
-            return CertificateManager::fromPfxFile($path, $senha);
-        });
-
-        $this->app->singleton(XmlSignerInterface::class, function ($app) {
-            return new XmlSigner($app->make(CertificateManagerInterface::class)->getCertificate());
-        });
-
-        $this->app->singleton(NfseNacionalFacade::class, function ($app) {
-            return NfseNacionalFacade::create(
-                config: $app->make(Config::class),
-                certificateManager: $app->make(CertificateManagerInterface::class),
-                xmlSigner: $app->make(XmlSignerInterface::class),
-                logger: $app->bound(LoggerInterface::class) ? $app->make(LoggerInterface::class) : new NullLogger(),
+        $this->app->singleton(NfseManager::class, function ($app) {
+            return new NfseManager(
+                $app['config'],
+                $app->bound(LoggerInterface::class) ? $app->make(LoggerInterface::class) : new NullLogger(),
             );
+        });
+
+        // Atalho para quem emite nota para uma única empresa/certificado (config via .env).
+        // Sistemas com vários clientes devem resolver NfseManager e chamar make() por request,
+        // passando a prefeitura/certificado daquele cliente — veja o README.
+        $this->app->bind(NfseNacionalFacade::class, function ($app) {
+            return $app->make(NfseManager::class)->default();
         });
     }
 

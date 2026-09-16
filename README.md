@@ -8,6 +8,11 @@ instalar nenhuma biblioteca extra do NFePHP**.
 Este guia foi escrito para quem nunca integrou com a NFS-e Nacional antes. Siga os passos
 na ordem.
 
+> **Seu sistema tem vários clientes, cada um com sua própria prefeitura/certificado?**
+> (ex.: um SaaS de gestão que emite nota em nome de cada empresa cadastrada) Os Passos 3 e 4
+> abaixo usam um único certificado fixo no `.env` — ótimo para quem emite nota só para a própria
+> empresa, mas não serve nesse caso. Pule direto para [Vários clientes (multi-tenant/SaaS)](#vários-clientes-multi-tenantsaas).
+
 ---
 
 ## O que você precisa ter em mãos antes de começar
@@ -39,6 +44,10 @@ php artisan vendor:publish --tag=nfse-config
 Isso cria o arquivo `config/nfse.php` na sua aplicação.
 
 ## Passo 3 — Configurar o `.env` da sua aplicação
+
+> Esta configuração fixa **uma única** prefeitura/certificado para toda a aplicação — use-a se
+> você emite nota apenas em nome da sua própria empresa. Se são vários clientes com dados
+> próprios, vá direto para [Vários clientes (multi-tenant/SaaS)](#vários-clientes-multi-tenantsaas).
 
 Abra o `.env` do **seu projeto** (não do pacote) e adicione:
 
@@ -75,6 +84,8 @@ use Hyperdevs\Nfse\Application\Exception\ValidationException;
 use Hyperdevs\Nfse\Facade\NfseNacionalFacade;
 
 // 1. A "Facade" é o único objeto que você precisa usar. Em Laravel, injete ou resolva do container:
+// (isto usa o certificado/prefeitura fixos do .env — para múltiplos clientes, veja a seção
+// "Vários clientes (multi-tenant/SaaS)" mais abaixo)
 $facade = app(NfseNacionalFacade::class);
 
 // 2. Monte os dados do prestador (quem está emitindo a nota — sua empresa)
@@ -175,6 +186,47 @@ $evento = new EventoRequest(
 $facade->cancelar($evento);
 ```
 
+## Vários clientes (multi-tenant/SaaS)
+
+Se seu sistema emite nota **em nome de vários clientes** (cada um com sua própria prefeitura
+e certificado digital — o cenário comum de um SaaS de gestão), **não** use o `.env` para isso:
+prefeitura e certificado pertencem à conta de cada cliente, não à aplicação como um todo.
+
+Use o `NfseManager` para montar uma Facade **por cliente, a cada requisição**, com os dados
+vindos de onde quer que você os guarde (banco de dados, storage do certificado, etc.):
+
+```php
+use Hyperdevs\Nfse\Config\Config;
+use Hyperdevs\Nfse\Http\Security\CertificateManager;
+use Hyperdevs\Nfse\Http\Security\XmlSigner;
+use Hyperdevs\Nfse\Provider\NfseManager;
+
+// $cliente é o registro do seu banco (empresa/tenant que está emitindo a nota)
+$certificateManager = CertificateManager::fromPfxFile(
+    $cliente->caminho_certificado,
+    $cliente->senha_certificado,
+);
+
+$facade = app(NfseManager::class)->make(
+    config: new Config([
+        'tpAmb' => $cliente->ambiente,       // 1 = Produção, 2 = Homologação
+        'prefeitura' => $cliente->codigo_ibge,
+    ]),
+    certificateManager: $certificateManager,
+    xmlSigner: new XmlSigner($certificateManager->getCertificate()),
+);
+
+$resposta = $facade->emitirDps($dpsRequest);
+```
+
+A partir daqui, use a `$facade` normalmente (`emitirDps`, `consultarPorChave`, `cancelar`, etc.),
+igual ao Passo 4. O `NfseManager` não guarda estado entre clientes — cada chamada a `make()`
+gera uma Facade isolada, então é seguro usar em uma aplicação com muitos clientes simultâneos.
+
+> 💡 Guarde o certificado de cada cliente em local seguro (ex.: storage privado/criptografado),
+> nunca versionado no código. O `.env` continua útil apenas para valores padrão/globais,
+> como o tipo de ambiente (homologação/produção) da aplicação toda, se fizer sentido no seu caso.
+
 ## Usando fora do Laravel (PHP puro)
 
 ```php
@@ -202,16 +254,12 @@ $facade = NfseNacionalFacade::create(
 | `CertificateExpiredException` | O certificado `.pfx` está vencido — gere um novo com seu emissor. |
 | `ValidationException` ao emitir | Algum campo obrigatório do `DpsRequest` está errado ou faltando (veja a mensagem, ela aponta o campo). |
 | `ServiceException` | Falha de rede, timeout, ou o certificado não corresponde ao CNPJ configurado na prefeitura. |
-| Nada acontece / erro de binding | Confirme que `NFSE_CERTIFICADO_PATH` e `NFSE_CERTIFICADO_SENHA` estão no `.env` e que o caminho do arquivo existe no servidor. |
+| `RuntimeException` ao usar `app(NfseNacionalFacade::class)` | Faltou configurar `NFSE_PREFEITURA`/`NFSE_CERTIFICADO_*` no `.env`. Se seu sistema tem vários clientes, isso é esperado — use `NfseManager::make()` (veja [Vários clientes (multi-tenant/SaaS)](#vários-clientes-multi-tenantsaas)) em vez da Facade padrão. |
 
 Se você quiser usar uma fonte de certificado diferente de um arquivo `.pfx` local (ex.: um
 cofre de segredos ou HSM), implemente `CertificateManagerInterface`/`XmlSignerInterface` e
-substitua o binding padrão no `ServiceProvider` da sua aplicação:
-
-```php
-$this->app->bind(\Hyperdevs\Nfse\Http\Security\Contract\CertificateManagerInterface::class, MeuCertificateManager::class);
-$this->app->bind(\Hyperdevs\Nfse\Http\Security\Contract\XmlSignerInterface::class, MeuXmlSigner::class);
-```
+monte-as você mesmo, passando para `NfseManager::make()` — o mesmo caminho usado no cenário
+multi-tenant, ou passando direto para `NfseNacionalFacade::create()` fora do Laravel.
 
 ---
 
